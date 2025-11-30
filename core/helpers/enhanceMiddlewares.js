@@ -8,7 +8,23 @@ const enhanceMiddleware = (req, res, next) => {
         res.end(JSON.stringify(data));
     };
 
-    next();
+    let data = "";
+    req.on("data", (chunk) => {
+        data += chunk;
+    });
+
+    req.on("end", () => {
+        if (data !== "") {
+            try {
+                const parsedData = JSON.parse(data);
+                req.body = parsedData;
+                next();
+            } catch (err) {
+                next("Error Message");
+            }
+        }
+    });
+
 }
 
 export default enhanceMiddleware;
