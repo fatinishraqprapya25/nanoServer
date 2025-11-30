@@ -1,5 +1,5 @@
-import NanoServer from "../core/nanoServer";
+import NanoServer from "../core/nanoServer.js";
 
 const app = NanoServer();
 
-app.
+app.start();

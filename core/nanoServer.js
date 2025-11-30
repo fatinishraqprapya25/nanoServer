@@ -1,4 +1,3 @@
-import config from "./config";
 import http from "http";
 
 function NanoServer() {
@@ -6,7 +5,7 @@ function NanoServer() {
     const routes = [];
 
     const use = (middleware) => {
-        middlewares.push(use);
+        middlewares.push(middleware);
     }
 
     const _addRoute = (method, path, handler) => {
@@ -30,7 +29,7 @@ function NanoServer() {
     }
 
     const _delete = (path, handler) => {
-        _addRoute("delete", path, handler);
+        _addRoute("DELETE", path, handler);
     }
 
     const matchRoute = (req) => {
@@ -64,9 +63,18 @@ function NanoServer() {
         next();
     }
 
-    const listen = () => {
+    const start = (port) => {
         const server = http.createServer(runMiddlewares);
-        server.listen(config);
+        server.listen(port, console.log("Server listening at port, ", port));
+    }
+
+    return {
+        use,
+        get,
+        put,
+        post,
+        delete: _delete,
+        start
     }
 
 }
