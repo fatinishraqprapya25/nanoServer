@@ -1,4 +1,4 @@
-function createRouter() {
+const createRouter = () => {
     const routes = [];
 
     const _addRoute = (method, path, handler) => {

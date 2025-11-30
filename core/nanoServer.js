@@ -2,7 +2,7 @@ import http from "http";
 import createRouter from "./helpers/createRouter.js";
 import createMiddlewareRunner from "./helpers/runMiddlewares.js"
 
-function NanoServer() {
+const NanoServer = () => {
     const middlewares = [];
 
     const { addRoutes, matchRoutes } = createRouter;

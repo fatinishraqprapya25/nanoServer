@@ -22,3 +22,5 @@ const createMiddlewareRunner = (middlewares, matchRoute) => (req, res) => {
 
     next();
 }
+
+export default createMiddlewareRunner;
