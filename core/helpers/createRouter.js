@@ -1,7 +1,7 @@
 const createRouter = () => {
     const routes = [];
 
-    const _addRoute = (method, path, handler) => {
+    const addRoutes = (method, path, handler) => {
         routes.push({
             method,
             path,
@@ -9,13 +9,13 @@ const createRouter = () => {
         })
     }
 
-    const matchRoute = (req) => {
+    const matchRoutes = (req) => {
         return routes.find(
             (r) => r.method === req.method && r.path === req.url
         )
     }
 
-    return { _addRoute, matchRoute };
+    return { addRoutes, matchRoutes };
 }
 
 export default createRouter;

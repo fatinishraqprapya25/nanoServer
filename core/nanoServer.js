@@ -6,7 +6,7 @@ import enhanceMiddleware from "./helpers/enhanceMiddlewares.js";
 const NanoServer = () => {
     const middlewares = [];
 
-    const { addRoutes, matchRoutes } = createRouter;
+    const { addRoutes, matchRoutes } = createRouter();
     const runMiddlewares = createMiddlewareRunner(middlewares, matchRoutes);
 
     // middleware to enhance req & req
